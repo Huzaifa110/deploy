@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 8000;
 const mongoDB = require("./db");
+const path = require('path')
 mongoDB();
 
 app.use((req, res, next) => {
