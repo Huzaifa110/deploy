@@ -12,9 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 
 app.use(express.json());
 app.use('/api', require("./routes/login"));
@@ -24,6 +22,9 @@ app.use('/api', require("./routes/dishes"));
 app.use(express.static(path.join(__dirname,'./frontend/build/')))
 app.get('/',(req,res)=>res.sendFile(path.resolve(__dirname,'./','frontend','build','index.html')))
 
+app.get('*', (req, res) => {
+    res.send('Page not Found')
+  })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
